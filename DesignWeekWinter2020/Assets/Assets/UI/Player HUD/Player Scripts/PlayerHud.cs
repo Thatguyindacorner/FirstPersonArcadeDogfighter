@@ -11,14 +11,15 @@ public class PlayerHud : MonoBehaviour
     public float playerMaxHealth;
     public float playerCurrentHealth;
     public Image playerHealthBarFilled;
-    public Image playerHealthBarEmpty;
+    //public Image playerHealthBarEmpty;
 
     public Text ammoCount;
     public Image currentWeapon;
 
     //Player special move components 
-    public Image barrelRollCoolDownFilled;
-    public Image barrelRollCoolDownEmpty;
+    //**MAYBE**
+  /*public Image barrelRollCoolDownFilled;
+    public Image barrelRollCoolDownEmpty;*/
 
    
   

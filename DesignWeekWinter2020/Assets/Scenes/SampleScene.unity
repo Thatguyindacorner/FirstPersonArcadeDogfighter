@@ -212,7 +212,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20a4d85288c7e89459c89792860ac95f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerScore: {fileID: 396980756}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,14 +535,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2d61d4517cbc743897710dca743649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMaxHealth: 0
-  playerCurrentHealth: 0
+  playerMaxHealth: 100
+  playerCurrentHealth: 100
   playerHealthBarFilled: {fileID: 1390004653}
-  playerHealthBarEmpty: {fileID: 0}
   ammoCount: {fileID: 0}
   currentWeapon: {fileID: 0}
-  barrelRollCoolDownFilled: {fileID: 0}
-  barrelRollCoolDownEmpty: {fileID: 0}
 --- !u!1 &1390004651
 GameObject:
   m_ObjectHideFlags: 0
