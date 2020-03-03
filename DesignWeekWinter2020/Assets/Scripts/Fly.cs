@@ -6,7 +6,7 @@ public class Fly : MonoBehaviour
 {
 
     Rigidbody p_rb;
-    [Range(1, 100)]
+    [Range(100, 10000)]
     public float speed;
     
     float maxAngleX;
