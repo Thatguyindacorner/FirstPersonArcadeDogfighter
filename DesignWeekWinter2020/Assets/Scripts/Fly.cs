@@ -34,8 +34,8 @@ public class Fly : MonoBehaviour
     void FixedUpdate()
     {
         //fly
-        p_rb.velocity = transform.forward * speed;
-
+        //p_rb.velocity = transform.forward * speed * Time.deltaTime;
+        transform.Translate(transform.forward * speed * Time.deltaTime);
 
 
 
@@ -46,25 +46,25 @@ public class Fly : MonoBehaviour
 
 
         if (Time.time - dirTimerX > 2 && dirTimerX != 0)
+        {
+            //lock rotation
+            transform.forward = (rotationX * rotationY).eulerAngles.normalized;
+            if (Input.GetKeyDown("space"))
             {
-                //lock rotation
-                transform.forward = (rotationX * rotationY).eulerAngles.normalized;
-                if (Input.GetKeyDown("space"))
-                {
-                    dirTimerX = 0;
-                }
+                dirTimerX = 0;
             }
+        }
         
 
-            if (Time.time - dirTimerY > 2 && dirTimerY != 0)
+        if (Time.time - dirTimerY > 2 && dirTimerY != 0)
+        {
+            //lock rotation
+            transform.forward = (rotationX * rotationY).eulerAngles.normalized;
+            if (Input.GetKeyDown("space"))
             {
-                //lock rotation
-                transform.forward = (rotationX * rotationY).eulerAngles.normalized;
-                if (Input.GetKeyDown("space"))
-                {
-                    dirTimerY = 0;
-                }
+                dirTimerY = 0;
             }
+        }
         
 
         /*
