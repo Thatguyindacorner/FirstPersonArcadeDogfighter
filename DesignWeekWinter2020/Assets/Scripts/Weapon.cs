@@ -63,7 +63,7 @@ public class Weapon : MonoBehaviour
                 lookPoint = hit.point;
             else
                 lookPoint = ray.GetPoint(1000);
-            
+
             if (gun == weaponType.SEMI || gun == weaponType.AUTO)
             {
                 if (_shootLeft)
@@ -89,3 +89,4 @@ public class Weapon : MonoBehaviour
 
     }
 }
+
