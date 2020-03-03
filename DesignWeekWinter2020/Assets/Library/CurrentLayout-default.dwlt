@@ -95,7 +95,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 444}
   m_MaxSize: {x: 22012, y: 10022}
   vertical: 0
-  controlID: 126
+  controlID: 53
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 444}
   m_MaxSize: {x: 4002, y: 8044}
   vertical: 1
-  controlID: 34
+  controlID: 54
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -328,9 +328,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: c43a0000
+      m_SelectedIDs: 74f5ffff
       m_LastClickedID: 0
-      m_ExpandedIDs: 32d8ffff34d8ffff62390000
+      m_ExpandedIDs: c4f8ffffdcfaffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -429,20 +429,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Art/Textures/asteroidtext
+    - Assets/Art/Materials
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Art/Textures/asteroidtext
+  - Assets/Art/Materials
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\FENIQUID\Desktop\FirstPersonArcadeDogfighter\DesignWeekWinter2020\Assets
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: c43a0000
-    m_LastClickedID: 15044
-    m_ExpandedIDs: 00000000bc350000de3500003436000068370000aa3700002238000000ca9a3b
+    m_SelectedIDs: c62f0000
+    m_LastClickedID: 12230
+    m_ExpandedIDs: 00000000502f00007a2f00001030000050320000b03200005233000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -470,7 +470,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000bc350000de350000343600006837000022380000
+    m_ExpandedIDs: 00000000502f00007a2f0000103000005032000052330000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -498,7 +498,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: e8350000f0350000803200000000000072300000f23800004e3a00008e2e0000662e0000
+    m_ExpandedInstanceIDs: e8350000f0350000803200000000000072300000f23800004e3a00008e2e0000662e000086350000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -643,9 +643,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0, y: 1, z: -1199}
+    m_Target: {x: 338.70453, y: 140.2009, z: -361.49982}
     speed: 2
-    m_Value: {x: 0, y: 1, z: -1199}
+    m_Value: {x: 338.70453, y: 140.2009, z: -361.49982}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -674,13 +674,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.17923394, y: -0.29447734, z: 0.05632853, w: 0.9370089}
+    m_Target: {x: 0.19329846, y: -0.60653085, z: 0.15519331, w: 0.755434}
     speed: 2
-    m_Value: {x: 0.18212976, y: -0.29290196, z: 0.05693857, w: 0.93690723}
+    m_Value: {x: 0.19283111, y: -0.6087916, z: 0.15577178, w: 0.75360745}
   m_Size:
-    m_Target: 2214.1736
+    m_Target: 1319.3032
     speed: 2
-    m_Value: 2118.8264
+    m_Value: 1262.4911
   m_Ortho:
     m_Target: 0
     speed: 2
