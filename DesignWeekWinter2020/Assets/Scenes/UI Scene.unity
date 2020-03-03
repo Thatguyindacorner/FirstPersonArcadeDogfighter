@@ -205,6 +205,12 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!4 &247848663 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2491315509164711847, guid: f73b6cf6681700b43ac7401e70dc4ac9,
+    type: 3}
+  m_PrefabInstance: {fileID: 7487333950829967383}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &355304090
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,6 +705,36 @@ MonoBehaviour:
   playerHealthBarFilled: {fileID: 1390004653}
   ammoCount: {fileID: 355304092}
   currentWeapon: {fileID: 835858505}
+--- !u!1 &1374183591
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1374183592}
+  m_Layer: 0
+  m_Name: Left Barrel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1374183592
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374183591}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.06150055, y: 2.147, z: 9.576001}
+  m_LocalScale: {x: 0.05, y: 0.1, z: 0.1}
+  m_Children: []
+  m_Father: {fileID: 247848663}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1390004651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1144,7 +1180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e61b1eeb4111ff4e80f173c0feaf06b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 49.7
+  speed: 1
 --- !u!54 &1680532892
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1177,6 +1213,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1802394742
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1802394743}
+  m_Layer: 0
+  m_Name: Right Barrel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1802394743
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802394742}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.064, y: 2.147, z: 9.576001}
+  m_LocalScale: {x: 0.05, y: 0.1, z: 0.1}
+  m_Children: []
+  m_Father: {fileID: 1936823091}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1936823091 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2491315509085265541, guid: f73b6cf6681700b43ac7401e70dc4ac9,
+    type: 3}
+  m_PrefabInstance: {fileID: 7487333950829967383}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2005614792
 GameObject:
   m_ObjectHideFlags: 0
