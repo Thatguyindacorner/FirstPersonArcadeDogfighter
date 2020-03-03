@@ -6,7 +6,6 @@ public class Bullet : MonoBehaviour
 {
     private Vector3 startPos;
     public float speed = 5.0f;
-    public Vector3 speedDir = Vector3.one;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +16,7 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        //transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, startPos) > 500)
             Destroy(this.gameObject);
