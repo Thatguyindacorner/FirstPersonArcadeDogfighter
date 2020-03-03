@@ -7,7 +7,13 @@ public class Weapon : MonoBehaviour
     public GameObject bullet;
     public GameObject missile;
 
-    enum weaponType {
+    private Transform rightBarrel;
+    private Transform leftBarrel;
+
+    private bool _shootLeft = false;
+
+    enum weaponType
+    {
         SEMI = 0,
         AUTO,
         MISSILE
@@ -18,7 +24,8 @@ public class Weapon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        rightBarrel = GameObject.Find("Right Barrel").transform;
+        leftBarrel = GameObject.Find("Left Barrel").transform;
     }
 
     // Update is called once per frame
@@ -47,13 +54,39 @@ public class Weapon : MonoBehaviour
         //TODO: split SEMI and AUTO if we actually implement auto...
         if (Input.GetButtonDown("Fire1"))
         {
-            Quaternion rotation = transform.rotation;
+            Camera camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+            Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            RaycastHit hit;
+            Vector3 lookPoint;
+
+            if (Physics.Raycast(ray, out hit))
+                lookPoint = hit.point;
+            else
+                lookPoint = ray.GetPoint(1000);
 
             if (gun == weaponType.SEMI || gun == weaponType.AUTO)
-                Instantiate(bullet, transform.position, rotation);
+            {
+                if (_shootLeft)
+                {
+                    GameObject bull = Instantiate(bullet, leftBarrel.position, transform.rotation);
+                    //bull.GetComponent<Rigidbody>().velocity = ray.direction * bull.GetComponent<Bullet>().speed;
+                    bull.transform.LookAt(lookPoint);
+                    _shootLeft = false;
+                }
+
+                else
+                {
+                    GameObject bull = Instantiate(bullet, rightBarrel.position, transform.rotation);
+                    //bull.GetComponent<Rigidbody>().velocity = bull.GetComponent<Bullet>().speed * ray.direction;
+                    bull.transform.LookAt(lookPoint);
+                    _shootLeft = true;
+                }
+            }
+
             else
                 Debug.Log("Insert missile here");
         }
 
     }
 }
+
