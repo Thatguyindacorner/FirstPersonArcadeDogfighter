@@ -6,18 +6,16 @@ public class Fly : MonoBehaviour
 {
 
     Rigidbody p_rb;
+    [Range(1, 100)]
     public float speed;
+    
     float maxAngleX;
     float maxAngleY;
-    Vector3 rotate;
 
     float lastX;
     float lastY;
     string dirX;
     string dirY;
-    float dirTimerX;
-    float dirTimerY;
-    float dirTimer;
 
     Quaternion rotationX;
     Quaternion rotationY;
@@ -34,38 +32,14 @@ public class Fly : MonoBehaviour
     void FixedUpdate()
     {
         //fly
-        //p_rb.velocity = transform.forward * speed * Time.deltaTime;
-        transform.Translate(transform.forward * speed * Time.deltaTime);
+
+        p_rb.velocity = transform.forward * speed;
 
 
 
         //steer
 
         //hold rotation to become new direction
-
-
-
-        if (Time.time - dirTimerX > 2 && dirTimerX != 0)
-        {
-            //lock rotation
-            transform.forward = (rotationX * rotationY).eulerAngles.normalized;
-            if (Input.GetKeyDown("space"))
-            {
-                dirTimerX = 0;
-            }
-        }
-        
-
-        if (Time.time - dirTimerY > 2 && dirTimerY != 0)
-        {
-            //lock rotation
-            transform.forward = (rotationX * rotationY).eulerAngles.normalized;
-            if (Input.GetKeyDown("space"))
-            {
-                dirTimerY = 0;
-            }
-        }
-        
 
         /*
 
@@ -119,18 +93,21 @@ public class Fly : MonoBehaviour
 
         if (Input.GetAxis("Horizontal") > 0)
         {
-            maxAngleX = Input.GetAxis("Horizontal");
-            dirX = "right";
+           // if (Input.GetAxis("Horizontal") > lastX)
+            {
+                maxAngleX = Input.GetAxis("Horizontal");
+                dirX = "right";
+            }
         }
         else if (Input.GetAxis("Horizontal") < 0)
         {
-            maxAngleX = Input.GetAxis("Horizontal");
-            dirX = "left";
+          // if (Input.GetAxis("Horizontal") < lastX)
+            {
+                maxAngleX = Input.GetAxis("Horizontal");
+                dirX = "left";
+            } 
         }
-        else
-        {
-            //turn Cam
-        }
+
 
         if (dirX == "right")
         {
@@ -149,18 +126,21 @@ public class Fly : MonoBehaviour
 
         if (Input.GetAxis("Vertical") > 0)
         {
-            maxAngleY = -Input.GetAxis("Vertical");
-            dirY = "down";
+            //if (Input.GetAxis("Vertical") > lastY)
+            {
+                maxAngleY = Input.GetAxis("Vertical");
+                dirY = "down";
+            }
         }
         else if (Input.GetAxis("Vertical") < 0)
         {
-            maxAngleY = -Input.GetAxis("Vertical");
-            dirY = "up";
+         //  if (Input.GetAxis("Vertical") < lastY)
+            {
+                maxAngleY = Input.GetAxis("Vertical");
+                dirY = "up";
+            }
         }
-        else
-        {
-            //turn Cam
-        }
+
 
         if (dirY == "down")
         {
@@ -176,41 +156,11 @@ public class Fly : MonoBehaviour
                 lastY = maxAngleY;
             }
         }
-        
-
-        rotate += new Vector3(maxAngleX, maxAngleY, 1);
-       // print(rotate);
 
         rotationX = Quaternion.AngleAxis(Mathf.Rad2Deg * maxAngleX, Vector3.up);
         rotationY = Quaternion.AngleAxis(Mathf.Rad2Deg * maxAngleY, Vector3.right);
 
-        if (Time.time - dirTimer > 2)
-        {
-            SetLastAngle(rotationX, rotationY);
-            dirTimer = 0;
-        }
 
-
-        if (Input.mousePosition.y >= Screen.height || Input.mousePosition.y <= Screen.height)
-        {
-            transform.forward = (rotationX * rotationY).eulerAngles.normalized;
-        }
-        if (Input.mousePosition.x >= Screen.width || Input.mousePosition.x <= Screen.width)
-        {
-            transform.forward = (rotationX * rotationY).eulerAngles.normalized;
-        }
-        
-        transform.rotation = rotationX * rotationY;
-        print(transform.forward.normalized + " vs " + new Vector3 (lastX, lastY, 1));
+        p_rb.MoveRotation(rotationX * rotationY);
     }
-
-    Vector3 GetLastAngle()
-    {
-        return lastAngle;
-    }
-    void SetLastAngle(Quaternion X, Quaternion Y)
-    {
-        lastAngle = (X * Y).eulerAngles + transform.forward;
-    }
-
 }
