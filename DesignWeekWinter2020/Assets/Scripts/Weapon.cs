@@ -58,8 +58,6 @@ public class Weapon : MonoBehaviour
             Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
 
             Quaternion rotation = transform.rotation;
-            rotation.ro
-
             if (gun == weaponType.SEMI || gun == weaponType.AUTO)
             {
                 if (_shootLeft)
