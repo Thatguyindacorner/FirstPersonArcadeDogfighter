@@ -193,15 +193,15 @@ public class Fly : MonoBehaviour
 
         if (Input.mousePosition.y >= Screen.height || Input.mousePosition.y <= Screen.height)
         {
-            transform.forward = (rotationX * rotationY).eulerAngles.normalized;
+            //transform.forward = (rotationX * rotationY).eulerAngles.normalized;
         }
         if (Input.mousePosition.x >= Screen.width || Input.mousePosition.x <= Screen.width)
         {
-            transform.forward = (rotationX * rotationY).eulerAngles.normalized;
+            //transform.forward = (rotationX * rotationY).eulerAngles.normalized;
         }
         
         transform.rotation = rotationX * rotationY;
-        print(transform.forward.normalized + " vs " + new Vector3 (lastX, lastY, 1));
+        //print(transform.forward.normalized + " vs " + new Vector3 (lastX, lastY, 1));
     }
 
     Vector3 GetLastAngle()

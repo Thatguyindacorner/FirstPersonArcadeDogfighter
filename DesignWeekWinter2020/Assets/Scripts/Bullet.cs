@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     private Vector3 startPos;
     public float speed = 5.0f;
+    public int damage = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,7 @@ public class Bullet : MonoBehaviour
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, startPos) > 45)
+        if (Vector3.Distance(transform.position, startPos) > 30)
             Destroy(this.gameObject);
     }
 }
