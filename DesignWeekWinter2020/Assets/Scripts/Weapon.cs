@@ -56,23 +56,29 @@ public class Weapon : MonoBehaviour
         {
             Camera camera = GameObject.Find("Main Camera").GetComponent<Camera>();
             Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            RaycastHit hit;
+            Vector3 lookPoint;
 
-            Quaternion rotation = transform.rotation;
-            rotation.ro
-
+            if (Physics.Raycast(ray, out hit))
+                lookPoint = hit.point;
+            else
+                lookPoint = ray.GetPoint(1000);
+            
             if (gun == weaponType.SEMI || gun == weaponType.AUTO)
             {
                 if (_shootLeft)
                 {
-                    GameObject bull = Instantiate(bullet, leftBarrel.position, rotation);
-                    bull.GetComponent<Rigidbody>().velocity = bull.GetComponent<Bullet>().speed * ray.direction;
+                    GameObject bull = Instantiate(bullet, leftBarrel.position, transform.rotation);
+                    //bull.GetComponent<Rigidbody>().velocity = ray.direction * bull.GetComponent<Bullet>().speed;
+                    bull.transform.LookAt(lookPoint);
                     _shootLeft = false;
                 }
 
                 else
                 {
-                    GameObject bull = Instantiate(bullet, rightBarrel.position, rotation);
-                    bull.GetComponent<Rigidbody>().velocity = bull.GetComponent<Bullet>().speed * ray.direction;
+                    GameObject bull = Instantiate(bullet, rightBarrel.position, transform.rotation);
+                    //bull.GetComponent<Rigidbody>().velocity = bull.GetComponent<Bullet>().speed * ray.direction;
+                    bull.transform.LookAt(lookPoint);
                     _shootLeft = true;
                 }
             }

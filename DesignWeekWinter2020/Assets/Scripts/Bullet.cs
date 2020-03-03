@@ -16,9 +16,9 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, startPos) > 500)
+        if (Vector3.Distance(transform.position, startPos) > 750)
             Destroy(this.gameObject);
     }
 }
