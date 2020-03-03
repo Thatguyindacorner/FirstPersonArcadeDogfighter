@@ -41,56 +41,30 @@ public class Fly : MonoBehaviour
 
         //hold rotation to become new direction
 
-        /*
-
+        
+        //Mouse controls
         if (Input.mousePosition.x > Screen.width / 2)
         {
             //turn right scales
             maxAngleX = (Input.mousePosition.x - Screen.width / 2) / (Screen.width / 2);
-            if (dirTimerX == 0)
-            {
-                dirTimerX = Time.time;
-            }
         }
         if (Input.mousePosition.x < Screen.width / 2)
         {
             //turn left scales
             maxAngleX = (Input.mousePosition.x - Screen.width / 2) / (Screen.width / 2);
-            if (dirTimerX == 0)
-            {
-                dirTimerX = Time.time;
-            }
         }
         if (Input.mousePosition.y > Screen.height / 2)
         {
             //turn up scales
             maxAngleY = (Input.mousePosition.y - Screen.height / 2) / (Screen.height / 2);
-            if (dirTimerY == 0)
-            {
-                dirTimerY = Time.time;
-            }
         }
         if (Input.mousePosition.y < Screen.height / 2)
         {
             //turn down scales
-            maxAngleY = (Input.mousePosition.y - Screen.height / 2) / (Screen.height / 2);
-            if (dirTimerY == 0)
-            {
-                dirTimerY = Time.time;
-            }
-            
+            maxAngleY = (Input.mousePosition.y - Screen.height / 2) / (Screen.height / 2);  
         }
 
-        if (Input.GetAxis("Horizontal") == 0 || Input.GetAxis("Vertical") == 0)
-        {
-            dirTimer = Time.time;
-            transform.forward = GetLastAngle();
-        }
-       
-        
-        */
-
-
+/*      //Keyboard & by proxy, joystick controls
         if (Input.GetAxis("Horizontal") > 0)
         {
            // if (Input.GetAxis("Horizontal") > lastX)
@@ -156,6 +130,8 @@ public class Fly : MonoBehaviour
                 lastY = maxAngleY;
             }
         }
+
+    */
 
         rotationX = Quaternion.AngleAxis(Mathf.Rad2Deg * maxAngleX, Vector3.up);
         rotationY = Quaternion.AngleAxis(Mathf.Rad2Deg * maxAngleY, Vector3.right);
