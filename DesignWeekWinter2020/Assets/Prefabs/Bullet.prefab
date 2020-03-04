@@ -233,5 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ba7ea1c240f884d982d2ad85eb1030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1500
+  speed: 2000
   damage: 1
+  isMissile: 0
+  explosion: {fileID: 0}
