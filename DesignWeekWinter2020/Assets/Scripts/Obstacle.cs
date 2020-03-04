@@ -9,6 +9,8 @@ public class Obstacle : MonoBehaviour
 
     public GameObject explosion;
 
+    public AudioSource explodeSoundEffect;
+
     GameObject player;
 
     // Start is called before the first frame update
@@ -44,7 +46,7 @@ public class Obstacle : MonoBehaviour
         if (other.GetComponent<Bullet>() != null)
         {
             Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
-
+            explodeSoundEffect.Play();
             Damage(other.GetComponent<Bullet>().damage);
             Destroy(other.gameObject);
         }

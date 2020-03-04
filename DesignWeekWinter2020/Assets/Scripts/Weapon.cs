@@ -17,8 +17,7 @@ public class Weapon : MonoBehaviour
     public float aimY = 0.5f;
     public float retMoveRate = 0.05f;
 
-    //Audio for shooting weapons
-    public AudioClip laserBeam;
+    
     public AudioSource laserSoundEffect;
 
     new Camera camera;
