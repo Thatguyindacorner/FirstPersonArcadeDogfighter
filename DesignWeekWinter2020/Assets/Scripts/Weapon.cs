@@ -80,7 +80,7 @@ public class Weapon : MonoBehaviour
             Vector3 lookPoint = Vector3.one;
             if (onePlayer)
             {
-                Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+                Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 100));
                 RaycastHit hit;
 
                 if (Physics.Raycast(ray, out hit))
@@ -91,7 +91,7 @@ public class Weapon : MonoBehaviour
 
             else
             {
-                Ray ray = camera.ViewportPointToRay(new Vector3(aimX, aimY, 0));
+                Ray ray = camera.ViewportPointToRay(new Vector3(aimX, aimY, 100));
                 RaycastHit hit;
 
                 if (Physics.Raycast(ray, out hit))
@@ -147,13 +147,24 @@ public class Weapon : MonoBehaviour
             if (aimX > 0.0f)
                 aimX -= retMoveRate;
 
-            Debug.Log("Ayyy");
         }
 
         else if (Input.GetAxis("Horizontal2") > 0) //right
         {
             if (aimX < 1.0f)
                 aimX += retMoveRate;
+        }
+
+        if (Input.GetAxis("Vertical2") < 0) //down
+        {
+            if (aimY > 0.0f)
+                aimY -= retMoveRate;
+        }
+
+        else if (Input.GetAxis("Vertical2") > 0) //up
+        {
+            if (aimY < 1.0f)
+                aimY += retMoveRate;
         }
     }
 

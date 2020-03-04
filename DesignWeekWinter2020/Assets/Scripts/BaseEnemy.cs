@@ -104,7 +104,6 @@ public class BaseEnemy : MonoBehaviour
 
     public void Damage(int amt)
     {
-        Debug.Log("Damaging");
         health -= amt;
 
         if (health <= 0)
