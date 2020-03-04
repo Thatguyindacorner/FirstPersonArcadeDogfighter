@@ -42,13 +42,19 @@ public class DebreeSpawner : MonoBehaviour
             print(player.GetComponent<Transform>().position.z - startPos.z);
             wave += 1;
             startPos = player.GetComponent<Transform>().position;
+            setPlayerSpeed();
             SpawnThings();
         }
     }
 
     int SpawnNum()
     {
-        return wave * 100;
+        return wave * 50;
+    }
+
+    void setPlayerSpeed()
+    {
+        player.GetComponent<Fly>().speed += (wave * 2);
     }
 
     void SpawnThings()
