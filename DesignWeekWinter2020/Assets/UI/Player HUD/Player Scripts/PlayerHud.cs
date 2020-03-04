@@ -13,8 +13,11 @@ public class PlayerHud : MonoBehaviour
     public Image playerHealthBarFilled;
     //public Image playerHealthBarEmpty;
 
-    public Text ammoCount;
-    public Image currentWeapon;
+
+    //Player weapon cooldown
+    public float weapOverheatMax;
+    public float weapCurrentOverheat;
+    public Image weapOverheatFilled;
 
     //Player special move components 
     //**MAYBE**
@@ -30,6 +33,11 @@ public class PlayerHud : MonoBehaviour
         if (playerCurrentHealth < 0)
         {
             Destroy(this.gameObject);
+        }
+        weapOverheatFilled.fillAmount = weapCurrentOverheat / weapOverheatMax;
+        if(weapCurrentOverheat > 1)
+        {
+            //When weapon bar reaches max, then set timer to prevent player from shooting current weapon. 
         }
     }
 
