@@ -1384,7 +1384,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 4018798701949196840, guid: 858bb2923df421b46a0a138ba6011b20, type: 3}
   missile: {fileID: 4018798701949196840, guid: 9dd39b5126d98fe4cb607db8104f68ab, type: 3}
-  onePlayer: 1
+  onePlayer: 0
+  aimX: 0.5
+  aimY: 0.5
+  retMoveRate: 0.05
   coolDown: 0
 --- !u!114 &1680532891
 MonoBehaviour:

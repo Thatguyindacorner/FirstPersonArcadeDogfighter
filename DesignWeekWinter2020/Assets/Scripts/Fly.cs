@@ -194,6 +194,8 @@ public class Fly : MonoBehaviour
             angles.x = relRange * Mathf.Sign(x) + offset;
             transform.eulerAngles = angles;
         }
+
+
     }
 
     private void OnCollisionEnter(Collision collision)

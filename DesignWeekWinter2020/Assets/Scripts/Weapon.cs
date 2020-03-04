@@ -11,7 +11,11 @@ public class Weapon : MonoBehaviour
     private Transform leftBarrel;
 
     private bool _shootLeft = false;
-    public bool onePlayer = true;
+    public bool onePlayer = false;
+
+    public float aimX = 0.5f;
+    public float aimY = 0.5f;
+    public float retMoveRate = 0.05f;
 
     new Camera camera;
 
@@ -44,18 +48,16 @@ public class Weapon : MonoBehaviour
     void Update()
     {
         //check to see if we should fire the weapon
+        ControlReticle();
         fireGun();
 
         if (Input.GetButtonDown("Weapon Switch"))
             switchGun();
 
-        if (Time.time - lastShot > 1)
-            replenishAmmo();
-
         if (coolDown == 20)
             coolDownState = true;
 
-        if (coolDownState)
+        if (coolDownState || Time.time - lastShot > 1)
             replenishAmmo();
     }
 
@@ -73,7 +75,6 @@ public class Weapon : MonoBehaviour
         if (coolDownState)
             return;
 
-        //TODO: split SEMI and AUTO if we actually implement auto...
         if (Input.GetButtonDown("Fire1"))
         {
             Vector3 lookPoint = Vector3.one;
@@ -90,7 +91,13 @@ public class Weapon : MonoBehaviour
 
             else
             {
-                
+                Ray ray = camera.ViewportPointToRay(new Vector3(aimX, aimY, 0));
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
+                    lookPoint = hit.point;
+                else
+                    lookPoint = ray.GetPoint(1000);
             }
 
             if (_shootLeft)
@@ -131,6 +138,23 @@ public class Weapon : MonoBehaviour
             lastShot = Time.time;
         }
 
+    }
+
+    void ControlReticle()
+    {
+        if (Input.GetAxis("Horizontal2") < 0) //left
+        {
+            if (aimX > 0.0f)
+                aimX -= retMoveRate;
+
+            Debug.Log("Ayyy");
+        }
+
+        else if (Input.GetAxis("Horizontal2") > 0) //right
+        {
+            if (aimX < 1.0f)
+                aimX += retMoveRate;
+        }
     }
 
     void replenishAmmo()
