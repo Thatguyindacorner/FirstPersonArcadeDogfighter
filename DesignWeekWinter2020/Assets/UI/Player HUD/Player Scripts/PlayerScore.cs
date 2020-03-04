@@ -8,10 +8,12 @@ public class PlayerScore : MonoBehaviour
     Text playerScore;
     public static int scoreValue = 0;
 
+    GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         playerScore = GetComponent<Text>();
     }
 
@@ -19,6 +21,7 @@ public class PlayerScore : MonoBehaviour
     void Update()
     {
         //Controls player's current score
+        scoreValue = player.GetComponent<Fly>().score;
         playerScore.text = "Score: " + scoreValue;
     }
 }

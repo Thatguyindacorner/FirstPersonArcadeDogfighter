@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Fly : MonoBehaviour
@@ -22,6 +23,8 @@ public class Fly : MonoBehaviour
 
     private Vector3 lastAngle;
 
+    public int score = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +35,6 @@ public class Fly : MonoBehaviour
     void FixedUpdate()
     {
         //fly
-
         p_rb.velocity = transform.forward * speed;
 
 
