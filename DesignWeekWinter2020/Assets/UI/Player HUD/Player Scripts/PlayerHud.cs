@@ -8,11 +8,12 @@ public class PlayerHud : MonoBehaviour
 {
 
     //Player health components
-    public float playerMaxHealth;
+    public float playerMaxHealth = 5;
     public float playerCurrentHealth;
     public Image playerHealthBarFilled;
     //public Image playerHealthBarEmpty;
 
+    public GameObject player;
 
     //Player weapon cooldown
     public float weapOverheatMax;
@@ -21,24 +22,29 @@ public class PlayerHud : MonoBehaviour
 
     //Player special move components 
     //**MAYBE**
-  /*public Image barrelRollCoolDownFilled;
-    public Image barrelRollCoolDownEmpty;*/
+    /*public Image barrelRollCoolDownFilled;
+      public Image barrelRollCoolDownEmpty;*/
 
-   
-  
+    private void Start()
+    {
+        playerCurrentHealth = player.GetComponent<Fly>().health;
+
+        weapOverheatMax = 20;
+        weapCurrentOverheat = player.GetComponent<Weapon>().coolDown;
+    }
+
     // Update is called once per frame
     void Update()
     {
-       playerHealthBarFilled.fillAmount = playerCurrentHealth / playerMaxHealth;
-        if (playerCurrentHealth < 0)
+        playerCurrentHealth = player.GetComponent<Fly>().health;
+        weapCurrentOverheat = player.GetComponent<Weapon>().coolDown;
+
+        playerHealthBarFilled.fillAmount = playerCurrentHealth / playerMaxHealth;
+        if (playerCurrentHealth <= 0)
         {
             Destroy(this.gameObject);
         }
         weapOverheatFilled.fillAmount = weapCurrentOverheat / weapOverheatMax;
-        if(weapCurrentOverheat > 1)
-        {
-            //When weapon bar reaches max, then set timer to prevent player from shooting current weapon. 
-        }
     }
 
     public void TakeDamage (int damage)

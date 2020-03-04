@@ -8,6 +8,9 @@ public class Bullet : MonoBehaviour
     public float speed = 5.0f;
     public int damage = 1;
 
+    public bool isMissile = false;
+    public GameObject explosion;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +22,15 @@ public class Bullet : MonoBehaviour
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, startPos) > 2000)
+        if (Vector3.Distance(transform.position, startPos) > 1000)
             Destroy(this.gameObject);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (isMissile)
+            Instantiate(explosion, transform);
+    }
+
+
 }

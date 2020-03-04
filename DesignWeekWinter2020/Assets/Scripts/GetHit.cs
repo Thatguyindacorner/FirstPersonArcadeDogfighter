@@ -10,7 +10,7 @@ public class GetHit : MonoBehaviour
     {
         if (collision.gameObject.tag == "Respawn")
         {
-            SceneManager.LoadScene(0);
+            //GetComponent<Fly>().Damage();
         }
     }
 }

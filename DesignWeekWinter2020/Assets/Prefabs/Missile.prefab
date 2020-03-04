@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6985771023267530094}
   - component: {fileID: 6815926575663261807}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4018798701949196840}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.02, y: -0.206, z: 2.9868314}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 8, y: 8, z: 16}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -105,4 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ba7ea1c240f884d982d2ad85eb1030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 1500
+  damage: 3
+  isMissile: 1
+  explosion: {fileID: 8229524717849063786, guid: acd8e8e643bcf4c46a14b6eb00f764a1,
+    type: 3}

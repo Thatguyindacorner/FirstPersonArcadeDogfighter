@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Fly : MonoBehaviour
@@ -26,6 +27,7 @@ public class Fly : MonoBehaviour
     private Vector3 lastAngle;
 
     public int score = 0;
+    public int health = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -191,6 +193,18 @@ public class Fly : MonoBehaviour
         {
             angles.x = relRange * Mathf.Sign(x) + offset;
             transform.eulerAngles = angles;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Respawn")
+        {
+            health -= 1;
+            Destroy(collision.gameObject);
+
+            if (health <= 0)
+                SceneManager.LoadScene(0);
         }
     }
 }
