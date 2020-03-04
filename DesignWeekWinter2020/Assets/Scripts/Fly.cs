@@ -18,6 +18,8 @@ public class Fly : MonoBehaviour
     string dirX;
     string dirY;
 
+    float rotSpeed = 20.0f;
+
     Quaternion rotationX;
     Quaternion rotationY;
 
@@ -43,8 +45,9 @@ public class Fly : MonoBehaviour
 
         //hold rotation to become new direction
 
-        
+
         //Mouse controls
+        /*
         if (Input.mousePosition.x > Screen.width / 2)
         {
             //turn right scales
@@ -65,8 +68,10 @@ public class Fly : MonoBehaviour
             //turn down scales
             maxAngleY = (Input.mousePosition.y - Screen.height / 2) / (Screen.height / 2);  
         }
+        */
 
-/*      //Keyboard & by proxy, joystick controls
+        /*
+        //Keyboard & by proxy, joystick controls
         if (Input.GetAxis("Horizontal") > 0)
         {
            // if (Input.GetAxis("Horizontal") > lastX)
@@ -75,6 +80,7 @@ public class Fly : MonoBehaviour
                 dirX = "right";
             }
         }
+
         else if (Input.GetAxis("Horizontal") < 0)
         {
           // if (Input.GetAxis("Horizontal") < lastX)
@@ -99,6 +105,7 @@ public class Fly : MonoBehaviour
                 lastX = maxAngleX;
             }
         }
+        
 
         if (Input.GetAxis("Vertical") > 0)
         {
@@ -108,6 +115,7 @@ public class Fly : MonoBehaviour
                 dirY = "down";
             }
         }
+
         else if (Input.GetAxis("Vertical") < 0)
         {
          //  if (Input.GetAxis("Vertical") < lastY)
@@ -133,12 +141,56 @@ public class Fly : MonoBehaviour
             }
         }
 
-    */
-
         rotationX = Quaternion.AngleAxis(Mathf.Rad2Deg * maxAngleX, Vector3.up);
         rotationY = Quaternion.AngleAxis(Mathf.Rad2Deg * maxAngleY, Vector3.right);
 
 
         p_rb.MoveRotation(rotationX * rotationY);
+        */
+
+        float relRange = (25 - -25) / 2f;
+
+        float offset = 25 - relRange;
+
+        Vector3 angles = transform.eulerAngles;
+        float x = ((angles.x + 540) % 360) - 180 - offset;
+        float y = ((angles.y + 540) % 360) - 180 - offset;
+
+
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            if (Mathf.Abs(y) <= relRange)
+                transform.Rotate(new Vector3(0, rotSpeed * Time.deltaTime, 0));
+        }
+
+        else if (Input.GetAxis("Horizontal") < 0)
+        {
+            if (Mathf.Abs(y) <= relRange)
+                transform.Rotate(new Vector3(0, -rotSpeed * Time.deltaTime, 0));
+        }
+
+        if (Mathf.Abs(y) > relRange)
+        {
+            angles.y = relRange * Mathf.Sign(y) + offset;
+            transform.eulerAngles = angles;
+        }
+
+        if (Input.GetAxis("Vertical") > 0)
+        {
+            if (Mathf.Abs(x) <= relRange)
+                transform.Rotate(new Vector3(rotSpeed * Time.deltaTime, 0, 0));
+        }
+
+        else if (Input.GetAxis("Vertical") < 0)
+        {
+            if (Mathf.Abs(x) <= relRange)
+                transform.Rotate(new Vector3(-rotSpeed * Time.deltaTime, 0, 0));
+        }
+
+        if (Mathf.Abs(x) > relRange)
+        {
+            angles.x = relRange * Mathf.Sign(x) + offset;
+            transform.eulerAngles = angles;
+        }
     }
 }
