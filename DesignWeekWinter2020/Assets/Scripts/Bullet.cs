@@ -9,7 +9,6 @@ public class Bullet : MonoBehaviour
     public int damage = 1;
 
     public bool isMissile = false;
-    public GameObject explosion;
 
     // Start is called before the first frame update
     void Start()
@@ -28,8 +27,6 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (isMissile)
-            Instantiate(explosion, transform);
     }
 
 

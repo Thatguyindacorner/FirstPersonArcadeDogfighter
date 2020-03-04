@@ -7,6 +7,8 @@ public class Obstacle : MonoBehaviour
     public int health = 3;
     public int scoreGiven = 100;
 
+    public GameObject explosion;
+
     GameObject player;
 
     // Start is called before the first frame update
@@ -18,7 +20,7 @@ public class Obstacle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //explosion.SetActive(false);
     }
 
     public void Damage(int amt)
@@ -32,6 +34,7 @@ public class Obstacle : MonoBehaviour
     void Die()
     {
         player.GetComponent<Fly>().score += scoreGiven;
+        Instantiate(explosion, transform);
         Destroy(this.gameObject);
     }
 
@@ -40,6 +43,8 @@ public class Obstacle : MonoBehaviour
     {
         if (other.GetComponent<Bullet>() != null)
         {
+            Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
+
             Damage(other.GetComponent<Bullet>().damage);
             Destroy(other.gameObject);
         }
