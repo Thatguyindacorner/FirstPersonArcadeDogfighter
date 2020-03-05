@@ -435,17 +435,22 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1080251467}
+    m_TransformParent: {fileID: 1030895440}
     m_Modifications:
     - target: {fileID: 130695782475777965, guid: 08f1c23ec9a637445af85ceb51cd959b,
         type: 3}
       propertyPath: m_Name
       value: MissileSmokeTrail
       objectReference: {fileID: 0}
+    - target: {fileID: 130695782475777965, guid: 08f1c23ec9a637445af85ceb51cd959b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 130695782475777618, guid: 08f1c23ec9a637445af85ceb51cd959b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.4
+      value: -24.805843
       objectReference: {fileID: 0}
     - target: {fileID: 130695782475777618, guid: 08f1c23ec9a637445af85ceb51cd959b,
         type: 3}
@@ -908,6 +913,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20a4d85288c7e89459c89792860ac95f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &493633941 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 130695782475777618, guid: 08f1c23ec9a637445af85ceb51cd959b,
+    type: 3}
+  m_PrefabInstance: {fileID: 202660170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &590663537
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,7 +1356,7 @@ Transform:
   m_LocalScale: {x: 0.05, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1080251467}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &793000535
 GameObject:
@@ -1544,6 +1555,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1030895439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1030895440}
+  m_Layer: 0
+  m_Name: SmokeParticle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1030895440
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030895439}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1348452264}
+  - {fileID: 493633941}
+  m_Father: {fileID: 1900179399}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1080251467 stripped
 Transform:
@@ -1824,6 +1867,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331598539}
   m_CullTransparentMesh: 0
+--- !u!4 &1348452264 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 130695782475777618, guid: 08f1c23ec9a637445af85ceb51cd959b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2003109157}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1390004651
 GameObject:
   m_ObjectHideFlags: 0
@@ -2240,7 +2289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 4018798701949196840, guid: 858bb2923df421b46a0a138ba6011b20, type: 3}
   missile: {fileID: 4018798701949196840, guid: 9dd39b5126d98fe4cb607db8104f68ab, type: 3}
-  smokeCD: {fileID: 130695782475777965, guid: 08f1c23ec9a637445af85ceb51cd959b, type: 3}
+  smokeCD: {fileID: 1030895439}
   aim: {fileID: 237027984}
   onePlayer: 1
   aimX: 0.5
@@ -2400,12 +2449,17 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1900179399}
+    m_TransformParent: {fileID: 1030895440}
     m_Modifications:
     - target: {fileID: 130695782475777965, guid: 08f1c23ec9a637445af85ceb51cd959b,
         type: 3}
       propertyPath: m_Name
       value: MissileSmokeTrail
+      objectReference: {fileID: 0}
+    - target: {fileID: 130695782475777965, guid: 08f1c23ec9a637445af85ceb51cd959b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 130695782475777618, guid: 08f1c23ec9a637445af85ceb51cd959b,
         type: 3}
@@ -2445,7 +2499,7 @@ PrefabInstance:
     - target: {fileID: 130695782475777618, guid: 08f1c23ec9a637445af85ceb51cd959b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 130695782475777618, guid: 08f1c23ec9a637445af85ceb51cd959b,
         type: 3}

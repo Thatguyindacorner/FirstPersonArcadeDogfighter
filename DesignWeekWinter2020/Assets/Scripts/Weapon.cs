@@ -162,13 +162,16 @@ public class Weapon : MonoBehaviour
         {
             // Instantiate(smokeCD, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             smokeCD.SetActive(true);
+            print("smokeisactive");
             coolDown -= 1;
             lastReplenish = Time.time;
         }
 
-        if (coolDown == 0)
+        if (coolDown == 0) { 
             coolDownState = false;
-       // Destroy(smokeCD, 3);
+        smokeCD.SetActive(false);
+            // Destroy(smokeCD, 3);
+        }
     }
 
     void lockOn()
