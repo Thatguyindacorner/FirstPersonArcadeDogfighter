@@ -12,6 +12,7 @@ public class PlayerScore : MonoBehaviour
     GameObject player;
     GameObject wave;
     GameObject currentWave;
+    GameObject currentScore;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,8 @@ public class PlayerScore : MonoBehaviour
         wave = GameObject.Find("Wave");
         currentWave = GameObject.Find("De bree");
 
-        playerScore = GetComponent<Text>(); 
+        playerScore = GetComponent<Text>();
+        
     }
 
     // Update is called once per frame
@@ -32,5 +34,7 @@ public class PlayerScore : MonoBehaviour
 
         wave.GetComponent<Text>().text = "Wave: " + waveNum;
         playerScore.text = "Score: " + scoreValue;
+       //**WIP, when the player scores, play this iTween** 
+     //  iTween.PunchScale(currentScore,iTween.Hash ("x", 3f, "y", 3f, 0, "time", 1f));
     }
 }

@@ -17,6 +17,7 @@ public class Fly : MonoBehaviour
 
     public int score = 0;
     public int health = 5;
+    public AudioSource collideSound;
 
     // Start is called before the first frame update
     void Start()
@@ -93,6 +94,7 @@ public class Fly : MonoBehaviour
             PlayerHud.Instance.UpdateHitUI();
             health -= 1;
             Destroy(collision.gameObject);
+            collideSound.Play();
 
             if (health <= 0)
                 SceneManager.LoadScene(0);

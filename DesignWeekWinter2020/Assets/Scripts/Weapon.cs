@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
 {
     public GameObject bullet;
     public GameObject missile;
+    public GameObject smokeCD;
 
     public GameObject aim;
 
@@ -47,6 +48,8 @@ public class Weapon : MonoBehaviour
 
         lastShot = Time.time;
         lastReplenish = Time.time;
+      
+       smokeCD.SetActive(false);
     }
 
     // Update is called once per frame
@@ -157,12 +160,15 @@ public class Weapon : MonoBehaviour
     {
         if (Time.time - lastReplenish > 0.15 && coolDown > 0)
         {
+            // Instantiate(smokeCD, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+            smokeCD.SetActive(true);
             coolDown -= 1;
             lastReplenish = Time.time;
         }
 
         if (coolDown == 0)
             coolDownState = false;
+       // Destroy(smokeCD, 3);
     }
 
     void lockOn()
