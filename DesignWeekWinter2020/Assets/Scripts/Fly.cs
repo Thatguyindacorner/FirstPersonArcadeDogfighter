@@ -61,8 +61,9 @@ public class Fly : MonoBehaviour
         {
             PlayerHud.Instance.UpdateHitUI();
             health -= 1;
-            Destroy(collision.gameObject);
             collideSound.Play();
+            Destroy(collision.gameObject);
+            
 
             if (health <= 0)
                 SceneManager.LoadScene(0);

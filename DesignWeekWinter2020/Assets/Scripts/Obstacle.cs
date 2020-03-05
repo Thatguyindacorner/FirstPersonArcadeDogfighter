@@ -41,13 +41,12 @@ public class Obstacle : MonoBehaviour
     {
         player.GetComponent<Fly>().score += scoreGiven;
         Instantiate(explosion, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-
         if (explosive)
             Explode();
 
         else
         {
-            explodeSoundEffect.Play();
+          
             Destroy(this.gameObject);
         }
     }
