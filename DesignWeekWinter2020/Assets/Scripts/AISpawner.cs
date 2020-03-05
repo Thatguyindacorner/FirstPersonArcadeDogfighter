@@ -25,7 +25,7 @@ public class AISpawner : MonoBehaviour
 
     void LevelTracker()
     {
-        if (player.GetComponent<Transform>().position.z - startPos.z > 7500)
+        if (player.GetComponent<Transform>().position.z - startPos.z > 5500)
         {
             print(player.GetComponent<Transform>().position.z - startPos.z);
             wave += 1;
@@ -39,7 +39,7 @@ public class AISpawner : MonoBehaviour
         int n = wave;
         while (n > 0)
         {
-            Instantiate(enemy, new Vector3(Random.Range(player.GetComponent<Transform>().position.x - 2000, 2000 + player.GetComponent<Transform>().position.x), Random.Range(player.GetComponent<Transform>().position.y - 1000, 1000 + player.GetComponent<Transform>().position.y), Random.Range(player.GetComponent<Transform>().position.z + 2500, player.GetComponent<Transform>().position.z + 10000)), Quaternion.Euler(0, 0, 0));
+            Instantiate(enemy, new Vector3(Random.Range(player.GetComponent<Transform>().position.x - 600, 600 + player.GetComponent<Transform>().position.x), Random.Range(player.GetComponent<Transform>().position.y - 250, 250 + player.GetComponent<Transform>().position.y), Random.Range(player.GetComponent<Transform>().position.z + 2500, player.GetComponent<Transform>().position.z + 10000)), Quaternion.Euler(0, 0, 0));
             n--;
         }
     }

@@ -45,7 +45,7 @@ public class Obstacle : MonoBehaviour
     {
         if (other.GetComponent<Bullet>() != null)
         {
-            Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
+            Instantiate(explosion, new Vector3(transform.position.x - 1000, transform.position.y, transform.position.z), Quaternion.identity);
             //explodeSoundEffect.Play();
             Damage(other.GetComponent<Bullet>().damage);
             Destroy(other.gameObject);

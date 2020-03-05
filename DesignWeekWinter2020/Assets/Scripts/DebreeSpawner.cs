@@ -9,7 +9,7 @@ public class DebreeSpawner : MonoBehaviour
     public GameObject player;
     Vector3 startPos;
 
-    int wave;
+    public int wave;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +37,7 @@ public class DebreeSpawner : MonoBehaviour
 
     void LevelTraker()
     {
-        if (player.GetComponent<Transform>().position.z - startPos.z > 7500)
+        if (player.GetComponent<Transform>().position.z - startPos.z > 5500)
         {
             wave += 1;
             startPos = player.GetComponent<Transform>().position;
@@ -48,7 +48,7 @@ public class DebreeSpawner : MonoBehaviour
 
     int SpawnNum()
     {
-        return wave * 25;
+        return wave * 35;
     }
 
     void setPlayerSpeed()

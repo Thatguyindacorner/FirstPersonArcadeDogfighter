@@ -7,6 +7,8 @@ public class Weapon : MonoBehaviour
     public GameObject bullet;
     public GameObject missile;
 
+    public GameObject aim;
+
     private Transform rightBarrel;
     private Transform leftBarrel;
 
@@ -15,7 +17,7 @@ public class Weapon : MonoBehaviour
 
     public float aimX = 0.5f;
     public float aimY = 0.5f;
-    public float retMoveRate = 0.05f;
+    public float retMoveRate = 500;
 
     
     public AudioSource laserSoundEffect;
@@ -57,7 +59,7 @@ public class Weapon : MonoBehaviour
         if (Input.GetButtonDown("Weapon Switch"))
             switchGun();
 
-        if (coolDown == 20)
+        if (coolDown == 25)
             coolDownState = true;
 
         if (coolDownState || Time.time - lastShot > 1)
@@ -81,34 +83,13 @@ public class Weapon : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             Vector3 lookPoint = Vector3.one;
-            if (onePlayer)
-            {
-                Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 100));
-                RaycastHit hit;
-
-                if (Physics.Raycast(ray, out hit))
-                    lookPoint = hit.point;
-                else
-                    lookPoint = ray.GetPoint(1000);
-            }
-
-            else
-            {
-                Ray ray = camera.ViewportPointToRay(new Vector3(aimX, aimY, 100));
-                RaycastHit hit;
-
-                if (Physics.Raycast(ray, out hit))
-                    lookPoint = hit.point;
-                else
-                    lookPoint = ray.GetPoint(1000);
-            }
 
             if (_shootLeft)
             {
                 if (gun == weaponType.SEMI)
                 {
                     GameObject bull = Instantiate(bullet, leftBarrel.position, transform.rotation);
-                    bull.transform.LookAt(lookPoint);
+                    bull.transform.LookAt(aim.transform.position);
                     _shootLeft = false;
                 }
 
@@ -125,7 +106,7 @@ public class Weapon : MonoBehaviour
                 if (gun == weaponType.SEMI)
                 {
                     GameObject bull = Instantiate(bullet, rightBarrel.position, transform.rotation);
-                    bull.transform.LookAt(lookPoint);
+                    bull.transform.LookAt(aim.transform.position);
                     _shootLeft = true;
                 }
 
@@ -149,33 +130,32 @@ public class Weapon : MonoBehaviour
     {
         if (Input.GetAxis("Horizontal2") < 0) //left
         {
-            if (aimX > 0.0f)
-                aimX -= retMoveRate;
-
+            if (aim.transform.position.x > -320)
+                aim.transform.Translate(-retMoveRate * Time.deltaTime, 0, 0);
         }
 
         else if (Input.GetAxis("Horizontal2") > 0) //right
         {
-            if (aimX < 1.0f)
-                aimX += retMoveRate;
+            if (aim.transform.position.x < 320)
+                aim.transform.Translate(retMoveRate * Time.deltaTime, 0, 0);
         }
 
         if (Input.GetAxis("Vertical2") < 0) //down
         {
-            if (aimY > 0.0f)
-                aimY -= retMoveRate;
+            if (aim.transform.position.y > -320)
+                aim.transform.Translate(0, -retMoveRate * Time.deltaTime, 0);
         }
 
         else if (Input.GetAxis("Vertical2") > 0) //up
         {
-            if (aimY < 1.0f)
-                aimY += retMoveRate;
+            if (aim.transform.position.y < 320)
+                aim.transform.Translate(0, retMoveRate * Time.deltaTime, 0);
         }
     }
 
     void replenishAmmo()
     {
-        if (Time.time - lastReplenish > 0.25 && coolDown > 0)
+        if (Time.time - lastReplenish > 0.15 && coolDown > 0)
         {
             coolDown -= 1;
             lastReplenish = Time.time;

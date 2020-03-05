@@ -35,21 +35,13 @@ public class PlayerHud : MonoBehaviour
         Instance = this;
         playerCurrentHealth = player.GetComponent<Fly>().health;
 
-        weapOverheatMax = 20;
+        weapOverheatMax = 25;
         weapCurrentOverheat = player.GetComponent<Weapon>().coolDown;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float retX = player.GetComponent<Weapon>().aimX;
-        float retY = player.GetComponent<Weapon>().aimY;
-
-        //Debug.Log(player.GetComponent<Weapon>().aimX);
-        //Debug.Log(retX * 100);
-
-        reticle.transform.position = new Vector3(retX * 100, retY * 200, transform.position.z);
-
         playerCurrentHealth = player.GetComponent<Fly>().health;
         weapCurrentOverheat = player.GetComponent<Weapon>().coolDown;
 
