@@ -202,7 +202,7 @@ public class Fly : MonoBehaviour
     {
         if (collision.gameObject.tag == "Respawn")
         {
-            Debug.Log("Ouch");
+            PlayerHud.Instance.UpdateHitUI();
             health -= 1;
             Destroy(collision.gameObject);
 

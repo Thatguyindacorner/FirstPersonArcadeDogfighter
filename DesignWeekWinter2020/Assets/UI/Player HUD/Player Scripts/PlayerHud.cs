@@ -7,11 +7,15 @@ using UnityEngine.UI;
 public class PlayerHud : MonoBehaviour
 {
 
+    public static PlayerHud Instance;
     //Player health components
     public float playerMaxHealth = 5;
     public float playerCurrentHealth;
     public Image playerHealthBarFilled;
     //public Image playerHealthBarEmpty;
+    public float playerHitTime;
+    public Image playerDamaged;
+    public Color m_startColor, m_endColor;
 
     public GameObject player;
     public GameObject reticle;
@@ -28,6 +32,7 @@ public class PlayerHud : MonoBehaviour
 
     private void Start()
     {
+        Instance = this;
         playerCurrentHealth = player.GetComponent<Fly>().health;
 
         weapOverheatMax = 20;
@@ -58,6 +63,32 @@ public class PlayerHud : MonoBehaviour
 
     public void TakeDamage (int damage)
     {
-        playerMaxHealth -= damage; 
+        print("Ouch");
+        playerMaxHealth -= damage;
+        
+    }
+
+
+    public void UpdateHitUI()
+    {
+        if (m_hitCoroutine != null)
+        {
+            StopCoroutine(m_hitCoroutine);
+        }
+        m_hitCoroutine = StartCoroutine(RedScreen());
+    }
+    private Coroutine m_hitCoroutine;
+    private IEnumerator RedScreen()
+    {
+        playerDamaged.color = m_startColor;
+        float timer = 0;
+        while(timer < playerHitTime)
+        {
+            playerDamaged.color = Color.Lerp(m_startColor, m_endColor, timer / playerHitTime);
+            timer += Time.deltaTime;
+            yield return null;
+
+        }
+        playerDamaged.color = m_endColor;
     }
 }
