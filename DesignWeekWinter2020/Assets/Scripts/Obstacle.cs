@@ -9,7 +9,7 @@ public class Obstacle : MonoBehaviour
 
     public GameObject explosion;
 
-    public AudioSource explodeSoundEffect;
+    //public AudioSource explodeSoundEffect;
 
     GameObject player;
 
@@ -46,7 +46,7 @@ public class Obstacle : MonoBehaviour
         if (other.GetComponent<Bullet>() != null)
         {
             Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
-            explodeSoundEffect.Play();
+            //explodeSoundEffect.Play();
             Damage(other.GetComponent<Bullet>().damage);
             Destroy(other.gameObject);
         }
