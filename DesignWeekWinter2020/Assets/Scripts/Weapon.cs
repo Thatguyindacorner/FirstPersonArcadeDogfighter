@@ -170,5 +170,14 @@ public class Weapon : MonoBehaviour
             coolDownState = false;
        // Destroy(smokeCD, 3);
     }
+
+    void lockOn()
+    {
+        int objsLockedOn = 0;
+        while (objsLockedOn < 5)
+        {
+
+        }
+    }
 }
 

@@ -7,6 +7,9 @@ public class Obstacle : MonoBehaviour
     public int health = 3;
     public int scoreGiven = 100;
 
+    public bool invulnerable = false;
+    public bool explosive = false;
+
     public GameObject explosion;
 
     //public AudioSource explodeSoundEffect;
@@ -22,7 +25,8 @@ public class Obstacle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //explosion.SetActive(false);
+        if (transform.position.z < player.transform.position.z - 25)
+            Destroy(this.gameObject);
     }
 
     public void Damage(int amt)
@@ -37,12 +41,20 @@ public class Obstacle : MonoBehaviour
     {
         player.GetComponent<Fly>().score += scoreGiven;
         Instantiate(explosion, transform);
-        Destroy(this.gameObject);
+
+        if (explosive)
+            Explode();
+
+        else
+            Destroy(this.gameObject);
     }
 
     //colliding with bullets
     private void OnTriggerEnter(Collider other)
     {
+        if (invulnerable)
+            return;
+
         if (other.GetComponent<Bullet>() != null)
         {
             Instantiate(explosion, new Vector3(transform.position.x - 1000, transform.position.y, transform.position.z), Quaternion.identity);
@@ -50,6 +62,20 @@ public class Obstacle : MonoBehaviour
             Damage(other.GetComponent<Bullet>().damage);
             Destroy(other.gameObject);
         }
+    }
 
+    void Explode()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 300);
+        int i = 0;
+        while (i < hitColliders.Length)
+        {
+            if (hitColliders[i].gameObject.GetComponent<Obstacle>() != null && !hitColliders[i].gameObject.GetComponent<Obstacle>().explosive)
+                hitColliders[i].gameObject.GetComponent<Obstacle>().Damage(5);
+
+            i++;
+        }
+
+        Destroy(this.gameObject);
     }
 }
