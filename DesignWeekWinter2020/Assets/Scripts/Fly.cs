@@ -29,7 +29,7 @@ public class Fly : MonoBehaviour
     void FixedUpdate()
     {
         //fly
-        p_rb.velocity = transform.forward * speed;
+        //p_rb.velocity = transform.forward * speed;
 
         float relRange = (20 - -20) / 2f;
 
@@ -60,19 +60,25 @@ public class Fly : MonoBehaviour
                 transform.Translate(-speed * Time.deltaTime, 0, 0);
         }
 
+        /*
         if (Mathf.Abs(y) > relRange)
         {
             angles.y = relRange * Mathf.Sign(y) + offset;
             transform.eulerAngles = angles;
         }
+        */
 
-        if (Input.GetAxis("Vertical") > 0)
+
+
+        if (Input.GetAxis("Vertical") > 0 && transform.position.y < 1000)
         {
+            //if (Mathf.Abs(x) <= relRange)
+            Debug.Log(transform.eulerAngles.x);
             if (Mathf.Abs(x) <= relRange)
                 transform.Rotate(new Vector3(rotSpeed * Time.deltaTime, 0, 0));
         }
 
-        else if (Input.GetAxis("Vertical") < 0)
+        else if (Input.GetAxis("Vertical") < 0 && transform.position.y > -1000)
         {
             if (Mathf.Abs(x) <= relRange)
                 transform.Rotate(new Vector3(-rotSpeed * Time.deltaTime, 0, 0));
@@ -84,7 +90,15 @@ public class Fly : MonoBehaviour
             transform.eulerAngles = angles;
         }
 
+        if (transform.position.y <= -1000 || transform.eulerAngles.x == 340)
+            transform.Rotate(new Vector3(-rotSpeed * Time.deltaTime, 0, 0));
 
+        else if (transform.position.y >= 1000 || transform.eulerAngles.x == 20)
+            transform.Rotate(new Vector3(rotSpeed * Time.deltaTime, 0, 0));
+
+
+
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision collision)
