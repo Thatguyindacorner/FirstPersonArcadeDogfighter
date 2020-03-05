@@ -12,7 +12,8 @@ public class PlayerHud : MonoBehaviour
     public float playerMaxHealth = 5;
     public float playerCurrentHealth;
     public Image playerHealthBarFilled;
-    //public Image playerHealthBarEmpty;
+    public float healthRegen;
+
     public float playerHitTime;
     public Image playerDamaged;
     public Color m_startColor, m_endColor;
@@ -34,21 +35,32 @@ public class PlayerHud : MonoBehaviour
     {
         Instance = this;
         playerCurrentHealth = player.GetComponent<Fly>().health;
+        healthRegen = 1f;
 
         weapOverheatMax = 25;
         weapCurrentOverheat = player.GetComponent<Weapon>().coolDown;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        print(playerCurrentHealth);
         playerCurrentHealth = player.GetComponent<Fly>().health;
         weapCurrentOverheat = player.GetComponent<Weapon>().coolDown;
 
         playerHealthBarFilled.fillAmount = playerCurrentHealth / playerMaxHealth;
 
+        //When the player takes damage, begin to regenerate health
+     /*   if(playerCurrentHealth < 5)
+        {
+           //playerHealthBarFilled.fillAmount = playerCurrentHealth + healthRegen * Time.deltaTime;
+           playerCurrentHealth += (healthRegen * Time.deltaTime);
+        }*/
+
         if (playerCurrentHealth <= 0)
+        {
             Destroy(this.gameObject);
+        }
 
         weapOverheatFilled.fillAmount = weapCurrentOverheat / weapOverheatMax;
     }

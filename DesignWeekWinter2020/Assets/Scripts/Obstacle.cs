@@ -12,7 +12,7 @@ public class Obstacle : MonoBehaviour
 
     public GameObject explosion;
 
-    //public AudioSource explodeSoundEffect;
+    public AudioSource explodeSoundEffect;
 
     GameObject player;
 
@@ -40,13 +40,15 @@ public class Obstacle : MonoBehaviour
     void Die()
     {
         player.GetComponent<Fly>().score += scoreGiven;
-        Instantiate(explosion, transform);
-
+        Instantiate(explosion, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
         if (explosive)
             Explode();
 
         else
+        {
+          
             Destroy(this.gameObject);
+        }
     }
 
     //colliding with bullets
@@ -57,8 +59,7 @@ public class Obstacle : MonoBehaviour
 
         if (other.GetComponent<Bullet>() != null)
         {
-            Instantiate(explosion, new Vector3(transform.position.x - 1000, transform.position.y, transform.position.z), Quaternion.identity);
-            //explodeSoundEffect.Play();
+           
             Damage(other.GetComponent<Bullet>().damage);
             Destroy(other.gameObject);
         }
@@ -76,6 +77,7 @@ public class Obstacle : MonoBehaviour
             i++;
         }
 
+        explodeSoundEffect.Play();
         Destroy(this.gameObject);
     }
 }

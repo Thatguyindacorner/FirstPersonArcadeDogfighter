@@ -5,7 +5,6 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public GameObject bullet;
-    public GameObject missile;
     public GameObject smokeCD;
 
     public GameObject aim;
@@ -16,8 +15,6 @@ public class Weapon : MonoBehaviour
     private bool _shootLeft = false;
     public bool onePlayer = false;
 
-    public float aimX = 0.5f;
-    public float aimY = 0.5f;
     public float retMoveRate = 500;
 
     
@@ -59,11 +56,14 @@ public class Weapon : MonoBehaviour
         ControlReticle();
         fireGun();
 
-        if (Input.GetButtonDown("Weapon Switch"))
-            switchGun();
+        //if (Input.GetButtonDown("Weapon Switch"))
+            //switchGun();
 
         if (coolDown == 25)
+        {
+            smokeCD.SetActive(true);
             coolDownState = true;
+        }
 
         if (coolDownState || Time.time - lastShot > 1)
             replenishAmmo();
@@ -85,40 +85,18 @@ public class Weapon : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            Vector3 lookPoint = Vector3.one;
-
             if (_shootLeft)
             {
-                if (gun == weaponType.SEMI)
-                {
-                    GameObject bull = Instantiate(bullet, leftBarrel.position, transform.rotation);
-                    bull.transform.LookAt(aim.transform.position);
-                    _shootLeft = false;
-                }
-
-                else
-                {
-                    GameObject bull = Instantiate(missile, leftBarrel.position, transform.rotation);
-                    bull.transform.LookAt(lookPoint);
-                    _shootLeft = false;
-                }
+                GameObject bull = Instantiate(bullet, leftBarrel.position, transform.rotation);
+                bull.transform.LookAt(aim.transform.position);
+                _shootLeft = false;
             }
 
             else
             {
-                if (gun == weaponType.SEMI)
-                {
-                    GameObject bull = Instantiate(bullet, rightBarrel.position, transform.rotation);
-                    bull.transform.LookAt(aim.transform.position);
-                    _shootLeft = true;
-                }
-
-                else
-                {
-                    GameObject bull = Instantiate(missile, rightBarrel.position, transform.rotation);
-                    bull.transform.LookAt(lookPoint);
-                    _shootLeft = true;
-                }
+                GameObject bull = Instantiate(bullet, rightBarrel.position, transform.rotation);
+                bull.transform.LookAt(aim.transform.position);
+                _shootLeft = true;
             }
 
             coolDown += 1;
@@ -133,25 +111,25 @@ public class Weapon : MonoBehaviour
     {
         if (Input.GetAxis("Horizontal2") < 0) //left
         {
-            if (aim.transform.position.x > -320)
+            if (aim.transform.localPosition.x > -640)
                 aim.transform.Translate(-retMoveRate * Time.deltaTime, 0, 0);
         }
 
         else if (Input.GetAxis("Horizontal2") > 0) //right
         {
-            if (aim.transform.position.x < 320)
+            if (aim.transform.localPosition.x < 640)
                 aim.transform.Translate(retMoveRate * Time.deltaTime, 0, 0);
         }
 
         if (Input.GetAxis("Vertical2") < 0) //down
         {
-            if (aim.transform.position.y > -320)
+            if (aim.transform.localPosition.y > -640)
                 aim.transform.Translate(0, -retMoveRate * Time.deltaTime, 0);
         }
 
         else if (Input.GetAxis("Vertical2") > 0) //up
         {
-            if (aim.transform.position.y < 320)
+            if (aim.transform.localPosition.y < 640)
                 aim.transform.Translate(0, retMoveRate * Time.deltaTime, 0);
         }
     }
@@ -162,13 +140,23 @@ public class Weapon : MonoBehaviour
         {
             // Instantiate(smokeCD, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             smokeCD.SetActive(true);
+            print("smokeisactive");
             coolDown -= 1;
             lastReplenish = Time.time;
         }
 
         if (coolDown == 0)
+        {
             coolDownState = false;
+            smokeCD.SetActive(false);
+        }
        // Destroy(smokeCD, 3);
+
+        if (coolDown == 0) { 
+            coolDownState = false;
+        smokeCD.SetActive(false);
+           
+        }
     }
 
     void lockOn()

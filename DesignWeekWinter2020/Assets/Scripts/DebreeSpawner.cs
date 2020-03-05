@@ -90,8 +90,12 @@ public class DebreeSpawner : MonoBehaviour
                 if (isAsteroid)
             {
                 spwn.transform.localScale = new Vector3(Random.Range(2, 4), Random.Range(2, 4), Random.Range(2, 4));
+
             }
                     
+
+           //spwn.transform.Rotate(90,0,0,Space.Self);
+
 
                 else if (isWall)
             {
