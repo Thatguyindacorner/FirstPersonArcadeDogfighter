@@ -21,12 +21,13 @@ public class Bullet : MonoBehaviour
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, startPos) > 1000)
+        if (Vector3.Distance(transform.position, startPos) > 2000)
             Destroy(this.gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+
     }
 
 
