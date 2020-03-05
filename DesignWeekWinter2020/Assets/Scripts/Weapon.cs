@@ -164,5 +164,14 @@ public class Weapon : MonoBehaviour
         if (coolDown == 0)
             coolDownState = false;
     }
+
+    void lockOn()
+    {
+        int objsLockedOn = 0;
+        while (objsLockedOn < 5)
+        {
+
+        }
+    }
 }
 

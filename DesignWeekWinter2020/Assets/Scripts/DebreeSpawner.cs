@@ -11,6 +11,9 @@ public class DebreeSpawner : MonoBehaviour
 
     public int wave;
 
+    private bool isAsteroid = false;
+    private bool isWall = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,12 +30,27 @@ public class DebreeSpawner : MonoBehaviour
 
     GameObject ChooseThing()
     {
-        /*
-        int index; 
-        index = Random.Range(0, 3);
-        return choices[index];
-        */
-        return choices[0];
+        isWall = false;
+
+        int gen = Random.Range(0, 10);
+        if (gen < 2)
+        {
+            isAsteroid = false;
+            return choices[2]; //mine
+        }
+
+        else if (gen >= 2 && gen < 4)
+        {
+            isAsteroid = false;
+            isWall = true;
+            return choices[1]; //wall
+        }
+
+        else
+        {
+            isAsteroid = true;
+            return choices[0]; //asteroid
+        }
     }
 
     void LevelTraker()
@@ -62,9 +80,15 @@ public class DebreeSpawner : MonoBehaviour
         while (n > 0)
         {
             GameObject thing = ChooseThing();
-            Instantiate(thing, new Vector3(Random.Range(player.GetComponent<Transform>().position.x - 1500, 1500 + player.GetComponent<Transform>().position.x), Random.Range(player.GetComponent<Transform>().position.y - 1000, 1000 + player.GetComponent<Transform>().position.y), Random.Range(player.GetComponent<Transform>().position.z + 2500, player.GetComponent<Transform>().position.z + 10000)), Quaternion.Euler(0,0,0));
+            GameObject spwn = Instantiate(thing, new Vector3(Random.Range(player.GetComponent<Transform>().position.x - 1500, 1500 + player.GetComponent<Transform>().position.x), Random.Range(player.GetComponent<Transform>().position.y - 1000, 1000 + player.GetComponent<Transform>().position.y), Random.Range(player.GetComponent<Transform>().position.z + 2500, player.GetComponent<Transform>().position.z + 10000)), Quaternion.Euler(Random.Range(-180, 180), Random.Range(-180, 180), Random.Range(-180, 180)));
+
+            if (isAsteroid)
+                spwn.transform.localScale = new Vector3(Random.Range(2, 4), Random.Range(2, 4), Random.Range(2, 4));
+
+            else if (isWall)
+                spwn.transform.eulerAngles = Vector3.zero;
+
             n--;
         }
-        
     }
 }
