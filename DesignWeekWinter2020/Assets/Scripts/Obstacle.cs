@@ -12,7 +12,7 @@ public class Obstacle : MonoBehaviour
 
     public GameObject explosion;
 
-    //public AudioSource explodeSoundEffect;
+    public AudioSource explodeSoundEffect;
 
     GameObject player;
 
@@ -20,6 +20,7 @@ public class Obstacle : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        explodeSoundEffect = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -57,9 +58,10 @@ public class Obstacle : MonoBehaviour
 
         if (other.GetComponent<Bullet>() != null)
         {
-            Instantiate(explosion, new Vector3(transform.position.x - 1000, transform.position.y, transform.position.z), Quaternion.identity);
-            //explodeSoundEffect.Play();
+           
             Damage(other.GetComponent<Bullet>().damage);
+            Instantiate(explosion, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+            explodeSoundEffect.Play();
             Destroy(other.gameObject);
         }
     }
