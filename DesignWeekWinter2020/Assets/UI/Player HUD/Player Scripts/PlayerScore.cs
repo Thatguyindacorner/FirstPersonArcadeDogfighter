@@ -35,6 +35,6 @@ public class PlayerScore : MonoBehaviour
         wave.GetComponent<Text>().text = "Wave: " + waveNum;
         playerScore.text = "Score: " + scoreValue;
        //**WIP, when the player scores, play this iTween** 
-     //  iTween.PunchScale(currentScore,iTween.Hash ("x", 3f, "y", 3f, 0, "time", 1f));
+     iTween.PunchScale(currentScore,iTween.Hash ("x", 3f, "y", 3f, 0, "time", 1f));
     }
 }
