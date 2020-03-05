@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
 public class PlayerScore : MonoBehaviour
 {
     Text playerScore;
@@ -22,6 +24,8 @@ public class PlayerScore : MonoBehaviour
         currentWave = GameObject.Find("De bree");
 
         playerScore = GetComponent<Text>();
+
+        DontDestroyOnLoad(this.gameObject);
         
     }
 

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 798688176007925814}
   - component: {fileID: 5030634968927555761}
   - component: {fileID: 3582469544706170023}
+  - component: {fileID: 5550916018152994365}
+  - component: {fileID: -8675975165103088089}
   m_Layer: 0
   m_Name: enemyship
   m_TagString: Untagged
@@ -77,6 +79,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   speed: 500
+--- !u!114 &5550916018152994365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3027577862615559331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 634db10235c0241d6ad43433a106016d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FloatVars: []
+  m_IntVars: []
+  m_BoolVars: []
+  m_StringVars: []
+  m_Vector3Vars: []
+  m_RectVars: []
+  m_ColorVars: []
+  m_QuaternionVars: []
+  m_GameObjectVars: []
+  m_TextureVars: []
+  m_MaterialVars: []
+  m_ObjectVars: []
+  m_DynamicLists: []
+  m_FsmEvents: []
+  m_ConcreteFsmEvents:
+  - m_ID: 986822812
+    m_Name: Attack
+    m_Blackboard: {fileID: 5550916018152994365}
+    m_IsConstant: 0
+    m_IsSystem: 0
+  - m_ID: 458836865
+    m_Name: Bool
+    m_Blackboard: {fileID: 5550916018152994365}
+    m_IsConstant: 0
+    m_IsSystem: 0
+  - m_ID: 728934384
+    m_Name: Retreat
+    m_Blackboard: {fileID: 5550916018152994365}
+    m_IsConstant: 0
+    m_IsSystem: 0
+  m_Namespace: 
+--- !u!114 &-8675975165103088089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3027577862615559331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27b962ddfa21461eb78fac1cb2f955f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Blackboard: {fileID: 5550916018152994365}
+  m_Parent: {fileID: 0}
+  m_StateName: StateMachine
+  m_Color: 0
+  m_HideScript: 1
+  m_Position: {x: 0, y: 0}
+  m_Transitions: []
+  m_CachedInstanceID: -46804
+  m_Description: 
+  m_EnabledState: {fileID: 0}
+  m_LastEnabledState: {fileID: 0}
+  m_StartState: {fileID: 0}
+  m_AnyState: {fileID: 0}
+  m_ConcurrentState: {fileID: 0}
 --- !u!1 &6423807693952109376
 GameObject:
   m_ObjectHideFlags: 0

@@ -108,5 +108,3 @@ MonoBehaviour:
   speed: 1500
   damage: 3
   isMissile: 1
-  explosion: {fileID: 8229524717849063786, guid: acd8e8e643bcf4c46a14b6eb00f764a1,
-    type: 3}

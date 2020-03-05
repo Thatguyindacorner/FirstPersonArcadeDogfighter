@@ -187,5 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   scoreGiven: 100
+  invulnerable: 0
+  explosive: 0
   explosion: {fileID: 6479086439031408481, guid: b3fa133ac53b07a4690086bdb5b98010,
     type: 3}
