@@ -72,6 +72,7 @@ public class Fly : MonoBehaviour
                 transform.Rotate(new Vector3(rotSpeed * Time.deltaTime, 0, 0));
         }
 
+
         else if (Input.GetAxis("Vertical") < 0)
         {
             if (Mathf.Abs(x) <= relRange)
