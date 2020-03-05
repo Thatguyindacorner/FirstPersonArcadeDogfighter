@@ -28,75 +28,29 @@ public class Fly : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //fly
-        //p_rb.velocity = transform.forward * speed;
-
-        float relRange = (20 - -20) / 2f;
-
-        float offset = 20 - relRange;
-
-        Vector3 angles = transform.eulerAngles;
-        float x = ((angles.x + 540) % 360) - 180 - offset;
-        float y = ((angles.y + 540) % 360) - 180 - offset;
-
-
         if (Input.GetAxis("Horizontal") > 0)
         {
-            /*
-            if (Mathf.Abs(y) <= relRange)
-                transform.Rotate(new Vector3(0, rotSpeed * Time.deltaTime, 0));
-                */
             if (transform.position.x < 1000)
                 transform.Translate(speed * Time.deltaTime, 0, 0);
         }
 
         else if (Input.GetAxis("Horizontal") < 0)
         {
-            /*
-            if (Mathf.Abs(y) <= relRange)
-                transform.Rotate(new Vector3(0, -rotSpeed * Time.deltaTime, 0));
-                */
             if (transform.position.x > -1000)
                 transform.Translate(-speed * Time.deltaTime, 0, 0);
         }
 
-        /*
-        if (Mathf.Abs(y) > relRange)
+        if (Input.GetAxis("Vertical") > 0)
         {
-            angles.y = relRange * Mathf.Sign(y) + offset;
-            transform.eulerAngles = angles;
-        }
-        */
-
-
-
-        if (Input.GetAxis("Vertical") > 0 && transform.position.y < 1000)
-        {
-            //if (Mathf.Abs(x) <= relRange)
-            Debug.Log(transform.eulerAngles.x);
-            if (Mathf.Abs(x) <= relRange)
-                transform.Rotate(new Vector3(rotSpeed * Time.deltaTime, 0, 0));
+            if (transform.position.y < 1000)
+                transform.Translate(0, speed * Time.deltaTime, 0);
         }
 
-        else if (Input.GetAxis("Vertical") < 0 && transform.position.y > -1000)
+        else if (Input.GetAxis("Vertical") < 0)
         {
-            if (Mathf.Abs(x) <= relRange)
-                transform.Rotate(new Vector3(-rotSpeed * Time.deltaTime, 0, 0));
+            if (transform.position.y > -1000)
+                transform.Translate(0, -speed * Time.deltaTime, 0);
         }
-
-        if (Mathf.Abs(x) > relRange)
-        {
-            angles.x = relRange * Mathf.Sign(x) + offset;
-            transform.eulerAngles = angles;
-        }
-
-        if (transform.position.y <= -1000 || transform.eulerAngles.x == 340)
-            transform.Rotate(new Vector3(-rotSpeed * Time.deltaTime, 0, 0));
-
-        else if (transform.position.y >= 1000 || transform.eulerAngles.x == 20)
-            transform.Rotate(new Vector3(rotSpeed * Time.deltaTime, 0, 0));
-
-
 
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }

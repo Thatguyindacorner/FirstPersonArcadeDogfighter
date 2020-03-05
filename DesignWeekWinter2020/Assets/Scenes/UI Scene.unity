@@ -1337,7 +1337,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1ed663068cb74ce4fb9fb968cf752e49, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2159,8 +2159,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 4018798701949196840, guid: 858bb2923df421b46a0a138ba6011b20, type: 3}
   smokeCD: {fileID: 130695782475777965, guid: 08f1c23ec9a637445af85ceb51cd959b, type: 3}
-  missile: {fileID: 4018798701949196840, guid: 9dd39b5126d98fe4cb607db8104f68ab, type: 3}
-  smokeCD: {fileID: 1030895439}
   aim: {fileID: 237027984}
   onePlayer: 1
   retMoveRate: 700
