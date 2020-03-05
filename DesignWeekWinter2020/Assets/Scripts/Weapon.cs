@@ -139,6 +139,8 @@ public class Weapon : MonoBehaviour
         if (Time.time - lastReplenish > 0.15 && coolDown > 0)
         {
             // Instantiate(smokeCD, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+            smokeCD.SetActive(true);
+            print("smokeisactive");
             coolDown -= 1;
             lastReplenish = Time.time;
         }
@@ -149,6 +151,12 @@ public class Weapon : MonoBehaviour
             smokeCD.SetActive(false);
         }
        // Destroy(smokeCD, 3);
+
+        if (coolDown == 0) { 
+            coolDownState = false;
+        smokeCD.SetActive(false);
+            // Destroy(smokeCD, 3);
+        }
     }
 
     void lockOn()
