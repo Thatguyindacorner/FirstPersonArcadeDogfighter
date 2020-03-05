@@ -105,7 +105,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
-  - {fileID: 165162887842756660}
   - {fileID: 6285298210683829876}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -142,7 +141,7 @@ Transform:
   m_Children:
   - {fileID: 727668274012292391}
   m_Father: {fileID: 7095401138384623135}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &4896212902523841194
 Rigidbody:
@@ -192,94 +191,5 @@ MonoBehaviour:
   explosive: 0
   explosion: {fileID: 6479086439031408481, guid: b3fa133ac53b07a4690086bdb5b98010,
     type: 3}
-  explodeSoundEffect: {fileID: 0}
---- !u!1001 &9017710170613072198
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 7095401138384623135}
-    m_Modifications:
-    - target: {fileID: 9098697804337599420, guid: d1b68ac52eb87d746b46aafad77cb85c,
-        type: 3}
-      propertyPath: m_Name
-      value: ExplosionSound
-      objectReference: {fileID: 0}
-    - target: {fileID: 9182717981856119154, guid: d1b68ac52eb87d746b46aafad77cb85c,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1115.4795
-      objectReference: {fileID: 0}
-    - target: {fileID: 9182717981856119154, guid: d1b68ac52eb87d746b46aafad77cb85c,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2085.7527
-      objectReference: {fileID: 0}
-    - target: {fileID: 9182717981856119154, guid: d1b68ac52eb87d746b46aafad77cb85c,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 7145.0264
-      objectReference: {fileID: 0}
-    - target: {fileID: 9182717981856119154, guid: d1b68ac52eb87d746b46aafad77cb85c,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9182717981856119154, guid: d1b68ac52eb87d746b46aafad77cb85c,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9182717981856119154, guid: d1b68ac52eb87d746b46aafad77cb85c,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9182717981856119154, guid: d1b68ac52eb87d746b46aafad77cb85c,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9182717981856119154, guid: d1b68ac52eb87d746b46aafad77cb85c,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9182717981856119154, guid: d1b68ac52eb87d746b46aafad77cb85c,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9182717981856119154, guid: d1b68ac52eb87d746b46aafad77cb85c,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9182717981856119154, guid: d1b68ac52eb87d746b46aafad77cb85c,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9182717981856119154, guid: d1b68ac52eb87d746b46aafad77cb85c,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.2020001
-      objectReference: {fileID: 0}
-    - target: {fileID: 9182717981856119154, guid: d1b68ac52eb87d746b46aafad77cb85c,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.2020001
-      objectReference: {fileID: 0}
-    - target: {fileID: 9182717981856119154, guid: d1b68ac52eb87d746b46aafad77cb85c,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.2020001
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d1b68ac52eb87d746b46aafad77cb85c, type: 3}
---- !u!4 &165162887842756660 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9182717981856119154, guid: d1b68ac52eb87d746b46aafad77cb85c,
+  explodeSoundEffect: {fileID: 5025176864889989297, guid: bf43c70f7a8b60346a6e76cb4c0e86c4,
     type: 3}
-  m_PrefabInstance: {fileID: 9017710170613072198}
-  m_PrefabAsset: {fileID: 0}

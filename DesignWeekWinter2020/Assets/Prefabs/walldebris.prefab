@@ -127,6 +127,8 @@ MonoBehaviour:
   invulnerable: 1
   explosive: 0
   explosion: {fileID: 0}
+  explodeSoundEffect: {fileID: 5025176864889989297, guid: bf43c70f7a8b60346a6e76cb4c0e86c4,
+    type: 3}
 --- !u!1 &5791496051980074679
 GameObject:
   m_ObjectHideFlags: 0

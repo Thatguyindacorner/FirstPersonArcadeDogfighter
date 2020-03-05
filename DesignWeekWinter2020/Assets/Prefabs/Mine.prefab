@@ -159,3 +159,5 @@ MonoBehaviour:
   explosive: 1
   explosion: {fileID: 6479086439031408481, guid: b3fa133ac53b07a4690086bdb5b98010,
     type: 3}
+  explodeSoundEffect: {fileID: 5025176864889989297, guid: bf43c70f7a8b60346a6e76cb4c0e86c4,
+    type: 3}
