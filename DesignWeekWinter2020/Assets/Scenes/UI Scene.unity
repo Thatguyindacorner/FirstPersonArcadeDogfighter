@@ -1551,7 +1551,7 @@ PrefabInstance:
     - target: {fileID: 9182717981856119154, guid: d1b68ac52eb87d746b46aafad77cb85c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9182717981856119154, guid: d1b68ac52eb87d746b46aafad77cb85c,
         type: 3}
@@ -2228,8 +2228,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 4018798701949196840, guid: 858bb2923df421b46a0a138ba6011b20, type: 3}
   smokeCD: {fileID: 130695782475777965, guid: 08f1c23ec9a637445af85ceb51cd959b, type: 3}
-  missile: {fileID: 4018798701949196840, guid: 9dd39b5126d98fe4cb607db8104f68ab, type: 3}
-  smokeCD: {fileID: 1030895439}
   aim: {fileID: 237027984}
   onePlayer: 1
   retMoveRate: 700

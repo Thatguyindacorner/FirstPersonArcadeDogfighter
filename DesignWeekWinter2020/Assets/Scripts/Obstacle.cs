@@ -60,8 +60,6 @@ public class Obstacle : MonoBehaviour
         {
            
             Damage(other.GetComponent<Bullet>().damage);
-            Instantiate(explosion, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-            explodeSoundEffect.Play();
             Destroy(other.gameObject);
         }
     }
@@ -77,7 +75,8 @@ public class Obstacle : MonoBehaviour
 
             i++;
         }
-
+        Instantiate(explosion, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+        explodeSoundEffect.Play();
         Destroy(this.gameObject);
     }
 }
