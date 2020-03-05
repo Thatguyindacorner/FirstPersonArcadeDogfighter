@@ -155,7 +155,7 @@ public class Weapon : MonoBehaviour
         if (coolDown == 0) { 
             coolDownState = false;
         smokeCD.SetActive(false);
-            // Destroy(smokeCD, 3);
+           
         }
     }
 
