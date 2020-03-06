@@ -140,7 +140,7 @@ public class Weapon : MonoBehaviour
         {
             // Instantiate(smokeCD, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             smokeCD.SetActive(true);
-            print("smokeisactive");
+            //print("smokeisactive");
             coolDown -= 1;
             lastReplenish = Time.time;
         }

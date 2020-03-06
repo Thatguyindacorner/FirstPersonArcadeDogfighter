@@ -6,11 +6,19 @@ using UnityEngine.SceneManagement;
 public class GetHit : MonoBehaviour
 {
 
-    private void OnCollisionEnter(Collision collision)
+    int score;
+
+    public void GameOver(int yourScore)
     {
-        if (collision.gameObject.tag == "Respawn")
-        {
-            //GetComponent<Fly>().Damage();
-        }
+        score = yourScore;
+        DontDestroyOnLoad(this.gameObject);
+        SceneManager.LoadScene(2);
     }
+
+    public int GetScore()
+    {
+        return score;
+    }
+    
+
 }

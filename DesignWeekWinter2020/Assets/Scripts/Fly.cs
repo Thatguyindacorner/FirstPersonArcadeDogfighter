@@ -15,14 +15,17 @@ public class Fly : MonoBehaviour
 
     private Vector3 lastAngle;
 
-    public int score = 0;
+    public int score;
     public int health = 5;
     public AudioSource collideSound;
+    public GameObject playerScore;
+    public GameObject LastScore;
 
     // Start is called before the first frame update
     void Start()
     {
         p_rb = GetComponent<Rigidbody>();
+        transform.position = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
@@ -63,10 +66,16 @@ public class Fly : MonoBehaviour
             health -= 1;
             collideSound.Play();
             Destroy(collision.gameObject);
-            
+
 
             if (health <= 0)
-                SceneManager.LoadScene(2);
+                LastScore.GetComponent<GetHit>().GameOver(score);
         }
     }
+
+    public int GetScore()
+    {
+        return score;
+    }
+
 }

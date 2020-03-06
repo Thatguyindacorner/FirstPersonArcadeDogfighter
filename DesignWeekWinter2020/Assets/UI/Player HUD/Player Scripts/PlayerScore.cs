@@ -53,7 +53,7 @@ public class PlayerScore : MonoBehaviour
                 StopCoroutine(m_startCor);
             }
             m_startCor = StartCoroutine(StartPow());
-            print("New Score");
+            //print("New Score");
         }
         waveNum = currentWave.GetComponent<DebreeSpawner>().wave;
         wave.GetComponent<Text>().text = "Wave: " + waveNum;
@@ -76,5 +76,10 @@ public class PlayerScore : MonoBehaviour
         }
         m_playerScore.transform.localScale = m_startingScale;
 
+    }
+
+    public int GetScore()
+    {
+        return scoreValue;
     }
 }

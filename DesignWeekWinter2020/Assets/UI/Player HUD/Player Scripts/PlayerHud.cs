@@ -44,7 +44,7 @@ public class PlayerHud : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        print(playerCurrentHealth);
+        //print(playerCurrentHealth);
         playerCurrentHealth = player.GetComponent<Fly>().health;
         weapCurrentOverheat = player.GetComponent<Weapon>().coolDown;
 
@@ -67,7 +67,7 @@ public class PlayerHud : MonoBehaviour
 
     public void TakeDamage (int damage)
     {
-        print("Ouch");
+        //print("Ouch");
         playerMaxHealth -= damage;
         
     }

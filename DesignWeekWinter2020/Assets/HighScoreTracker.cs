@@ -7,11 +7,13 @@ using UnityEngine.SceneManagement;
 
 public class HighScoreTracker : MonoBehaviour {
 
+
+
     string fileName;
     public Text display;
     //List<float> scores;
     string[] lines;
-    public string stringToEdit = "Enter your Name";
+    string stringToEdit;
     public Text letter1;
     public Text letter2;
     public Text letter3;
@@ -19,6 +21,7 @@ public class HighScoreTracker : MonoBehaviour {
     public Text letter5;
     public GameObject end;
     public float score;
+    public Text yourScore;
 
     enum letter { L1, L2, L3, L4, L5, End };
     letter currentLetter;
@@ -30,8 +33,8 @@ public class HighScoreTracker : MonoBehaviour {
 
     void Start()    
 {
-       // score = float.Parse(GameObject.FindGameObjectWithTag("Score").GetComponent<Text>().text);
-
+        score = GameObject.FindGameObjectWithTag("Score").GetComponent<GetHit>().GetScore();
+        yourScore.text = ("Your Score was: " + score);
         currentLetter = letter.L1;
         currentSpot = letter1;
         //content = new GUIContent();
@@ -39,7 +42,7 @@ public class HighScoreTracker : MonoBehaviour {
         //style.alignment = TextAnchor.MiddleCenter;
         
 
-        fileName = "highscore.txt";
+    fileName = "highscore.txt";
     var sr = new StreamReader("Assets/Resources/" + fileName);
     var fileContents = sr.ReadToEnd();
     sr.Close();
@@ -55,75 +58,85 @@ public class HighScoreTracker : MonoBehaviour {
 
         foreach (string line in lines)
         {
+            display.text += line + "\n";
+        }
+                /*
 
-            scores[index] = (float.Parse(line.Split(": "[1])[1]));
+                //print(line);
+                scores[index] = (float.Parse(line.Split(": "[0])[1]));
 
-            if (scores[index] > highest)
-            {
-                highest = scores[index];
-
-            }
-
-            if (index == 0)
-            {
-                holder[0] = lines[0];
-            }
-
-            for (int i = 0; i != index; i++)
-            {
-                print("i: " + i + " | " + index);
-                print(float.Parse(holder[i].Split(": "[1])[1]));
-                //if (scores[index] > float.Parse(holder[0].Split(": "[1])[1]))
+                if (scores[index] > highest)
                 {
-                    if (holder[i] != null)
+                    highest = scores[index];
+
+                }
+
+                if (index == 0)
+                {
+                    holder[0] = lines[0];
+                }
+
+                for (int i = 0; i != index; i++)
+                {
+                    print("i: " + i + " | " + index);
+                    //print(float.Parse(holder[i].Split(": "[1])[1]));
+                    //if (scores[index] > float.Parse(holder[0].Split(": "[1])[1]))
                     {
-                        if (scores[index] > float.Parse(holder[i].Split(": "[1])[1]))
+                        if (holder[i] != null)
                         {
-                            int temp = i;
-
-                            for (int q = index - i; q > 0; q--)
+                            if (scores[index] > float.Parse(holder[i].Split(": "[0])[1]))
                             {
-                                // print("q: "+q);
-                                print("q: " +q+ "vs i: "+ i);
-                                if (i < q)
+                                int temp = i;
+
+                                for (int q = index - i; q > 0; q--)
                                 {
-                                    holder[q] = holder[q - i];
-                                i++;
+                                    // print("q: "+q);
+                                    print("q: " + q + "vs i: " + i);
+                                    if (i < q)
+                                    {
+                                        holder[q] = holder[q - i];
+                                        i++;
+                                    }
+
                                 }
-                                
+                                //holder[index] = holder[i];
+                                holder[i] = lines[index];
+                                break;
                             }
-                            //holder[index] = holder[i];
-                            holder[i] = lines[index];
-                            break;
-                        }
-                        else
-                        {
-                            holder[index] = lines[index];
+                            else
+                            {
+                                holder[index] = lines[index];
+
+                            }
 
                         }
+                        //else if (lines[index] != holder[0])
+
+                        print("new: " + holder[i]);
+                    }
+                    //else
+                    {
+
 
                     }
-                    //else if (lines[index] != holder[0])
-                    
-                    print("new: "+holder[i]);        
                 }
-                //else
-                {
-                    
-                    
-                }
+
+                print(holder[0]);
+
+                //print(line);
+                index++;
             }
-
-            print(holder[0]);
-
-            //print(line);
-            index++;
-        }
+            
+            }
         foreach (string line in holder)
         {
             display.text += line + "\n";
         }
         print(holder[3]);
+
+        */
+        
+
     }
     private void Update()
     {
@@ -133,10 +146,19 @@ public class HighScoreTracker : MonoBehaviour {
         }
     }
 
+    //[MenuItem("Tools/Write file")]
     void AddScore()
+
     {
-        var name = File.CreateText(fileName);
-        name.WriteLine(stringToEdit+": "+score);
+        string path = "Assets/Resources/highscore.txt";
+
+        //Write some text to the test.txt file
+        StreamWriter writer = new StreamWriter(path, true);
+        writer.WriteLine(stringToEdit + ": " + score);
+        writer.Close();
+        print(fileName + "\n" + stringToEdit + ": " + score);
+        //File.AppendAllText(fileName, "\n" + stringToEdit + ": " + score);
+
     }
 
     Text NextLetter(letter current)
@@ -186,10 +208,11 @@ public class HighScoreTracker : MonoBehaviour {
 
         if (currentSpot == null)
         {
-
+            AddScore();
             end.SetActive(true);
             if (Input.GetButtonDown("Fire1"))
             {
+                Destroy(GameObject.FindGameObjectWithTag("Score"));
                 SceneManager.LoadScene(0);
             }
 

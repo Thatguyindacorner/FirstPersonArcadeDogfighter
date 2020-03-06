@@ -59,7 +59,7 @@ public class DebreeSpawner : MonoBehaviour
         if (player.GetComponent<Transform>().position.z - startPos.z > 5500)
         {
             wave += 1;
-            print(wave);
+            //print(wave);
             startPos = player.GetComponent<Transform>().position;
             setPlayerSpeed();
             SpawnThings();
