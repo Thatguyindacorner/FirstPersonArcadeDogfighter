@@ -2,6 +2,8 @@
 using UnityEditor;
 using System.IO;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class HighScoreTracker : MonoBehaviour {
 
@@ -28,7 +30,8 @@ public class HighScoreTracker : MonoBehaviour {
 
     void Start()    
 {
-        
+       // score = float.Parse(GameObject.FindGameObjectWithTag("Score").GetComponent<Text>().text);
+
         currentLetter = letter.L1;
         currentSpot = letter1;
         //content = new GUIContent();
@@ -185,6 +188,10 @@ public class HighScoreTracker : MonoBehaviour {
         {
 
             end.SetActive(true);
+            if (Input.GetButtonDown("Fire1"))
+            {
+                SceneManager.LoadScene(0);
+            }
 
         }
         else

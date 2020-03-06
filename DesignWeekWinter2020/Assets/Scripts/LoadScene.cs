@@ -12,7 +12,17 @@ public class LoadScene : MonoBehaviour
     public void PlayGame()
     {
         print("ClickMe");
-        SceneManager.LoadScene("UI Scene");
+        
+        
        
     }
+
+    void Update()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            SceneManager.LoadScene("UI Scene");
+        }
+    }
+
 }

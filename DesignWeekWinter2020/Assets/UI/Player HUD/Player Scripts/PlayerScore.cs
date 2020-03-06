@@ -30,7 +30,7 @@ public class PlayerScore : MonoBehaviour
         currentWave = GameObject.Find("De bree");
 
 
-        playerScore = GetComponent<Text>();
+        //playerScore = GetComponent<Text>();
 
         DontDestroyOnLoad(this.gameObject);
 
